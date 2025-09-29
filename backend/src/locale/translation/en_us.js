@@ -216,7 +216,7 @@ module.exports = {
   quote: 'Quote',
   payment: 'Payment',
   product: 'Product',
-  product_category: 'Product Category',
+  product_category: 'Product Category', // Or ensure it exists
   expense: 'Expense',
   expenses_category: 'Expenses Category',
   settings: 'Settings',

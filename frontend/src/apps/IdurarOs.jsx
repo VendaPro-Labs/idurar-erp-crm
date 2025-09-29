@@ -27,39 +27,41 @@ export default function IdurarOs() {
     '🚀 Welcome to IDURAR ERP CRM! Did you know that we also offer commercial customization services? Contact us at hello@idurarapp.com for more information.'
   );
 
-  // // Online state
-  // const [isOnline, setIsOnline] = useState(navigator.onLine);
+  // Online state
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-  // useEffect(() => {
-  //   // Update network status
-  //   const handleStatusChange = () => {
-  //     setIsOnline(navigator.onLine);
-  //     if (!isOnline) {
-  //       console.log('🚀 ~ useEffect ~ navigator.onLine:', navigator.onLine);
-  //       notification.config({
-  //         duration: 20,
-  //         maxCount: 1,
-  //       });
-  //       // Code to execute when there is internet connection
-  //       notification.error({
-  //         message: 'No internet connection',
-  //         description: 'Cannot connect to the Internet, Check your internet network',
-  //       });
-  //     }
-  //   };
+  useEffect(() => {
+    // Update network status
+    const handleStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
 
-  //   // Listen to the online status
-  //   window.addEventListener('online', handleStatusChange);
+    if (!isOnline) {
+      console.log('🚀 ~ useEffect ~ navigator.onLine:', navigator.onLine);
+      notification.config({
+        duration: 20,
+        maxCount: 1,
+      });
+      // Code to execute when there is no internet connection
+      notification.error({
+        message: 'No internet connection',
+        description: 'Cannot connect to the Internet, Check your internet network',
+      });
+    }
 
-  //   // Listen to the offline status
-  //   window.addEventListener('offline', handleStatusChange);
+    // Listen to the online status
+    window.addEventListener('online', handleStatusChange);
 
-  //   // Specify how to clean up after this effect for performance improvment
-  //   return () => {
-  //     window.removeEventListener('online', handleStatusChange);
-  //     window.removeEventListener('offline', handleStatusChange);
-  //   };
-  // }, [navigator.onLine]);
+    // Listen to the offline status
+    window.addEventListener('offline', handleStatusChange);
+
+    // Specify how to clean up after this effect for performance improvement
+    return () => {
+      window.removeEventListener('online', handleStatusChange);
+      window.removeEventListener('offline', handleStatusChange);
+      notification.destroy();
+    };
+  }, [isOnline]);
 
   if (!isLoggedIn)
     return (

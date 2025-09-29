@@ -5,8 +5,8 @@ import { Button, Drawer, Layout, Menu } from 'antd';
 import { useAppContext } from '@/context/appContext';
 
 import useLanguage from '@/locale/useLanguage';
-import logoIcon from '@/style/images/logo-icon.svg';
-import logoText from '@/style/images/logo-text.svg';
+import logoIcon from '@/style/images/VENDAPayLogo.png';
+import logoText from '@/style/images/VENDAFast.png';
 
 import useResponsive from '@/hooks/useResponsive';
 
@@ -58,6 +58,11 @@ function Sidebar({ collapsible, isMobile = false }) {
       key: 'customer',
       icon: <CustomerServiceOutlined />,
       label: <Link to={'/customer'}>{translate('customers')}</Link>,
+    },
+    {
+      key: 'product-category',
+      icon: <TagsOutlined />,
+      label: <Link to={'/product-category'}>{translate('product_category')}</Link>,
     },
 
     {
@@ -151,16 +156,16 @@ function Sidebar({ collapsible, isMobile = false }) {
           cursor: 'pointer',
         }}
       >
-        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '40px' }} />
+        <img src={logoIcon} alt="Logo" style={{ marginLeft: '-5px', height: '120px' }} />
 
         {!showLogoApp && (
           <img
             src={logoText}
             alt="Logo"
             style={{
-              marginTop: '3px',
-              marginLeft: '10px',
-              height: '38px',
+              marginTop: '-20px',
+              marginLeft: '-10px',
+              height: '150px',
             }}
           />
         )}
